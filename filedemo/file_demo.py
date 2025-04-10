@@ -1,14 +1,19 @@
 def main():
-    with open("data.txt","w") as fileWrite:
-        fileWrite.write("This is line 1\r")
-        fileWrite.write("This is line 2\r")
-        fileWrite.write("This is line 3\r")
-    
+
+    lines = [
+            "This is line 1\n",
+            "This is line 2\n",
+            "This is line 3\n"
+            ]
+    with open("data.txt", "w") as fileWrite:
+        for line in lines:
+            fileWrite.write(line)
+
     with open("data.txt", "r") as fileRead:
         lineCount = 0
         for line in fileRead:
-            print(f"{line}")
             lineCount += 1
+            print(f"{lineCount}) {line.rstrip().upper()}")
         print(f"There are {lineCount} lines in this file")
 
 if __name__ == "__main__":
